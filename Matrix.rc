@@ -108,7 +108,7 @@ BEGIN
     PUSHBUTTON      "&Cancel",IDCANCEL,183,168,50,14
     LTEXT           "Based on XMatrix, Copyright (c) 1999 Jamie Zawinski <jwz@jwz.org>",
                     IDC_STATIC,6,187,220,8
-    LTEXT           "Windows port by Craig Boston <ezzt@ticnet.com>",
+    LTEXT           "Windows port by Craig Boston <craig@naegu.gank.org>",
                     IDC_STATIC,6,196,211,9
 END
 
