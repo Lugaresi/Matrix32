@@ -137,7 +137,7 @@ BOOL WINAPI ReadConfigFromRegistry(m_config *config)
 	size = sizeof(DWORD);
 	err = RegQueryValueEx(hMatrix, "Density", 0, &type, (UCHAR*)&dummy, &size);
 	if (!err && (type == REG_DWORD)) config->density = dummy;
-	else config->density = 50;	// changed slightly from the X version
+	else config->density = 40;	// changed slightly from the X version
 
 	size = sizeof(DWORD);
 	err = RegQueryValueEx(hMatrix, "Delay", 0, &type, (UCHAR*)&dummy, &size);
