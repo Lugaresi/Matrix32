@@ -1,0 +1,5 @@
+DESCRIPTION 'SCRNSAVE : What IS The Matrix...?'
+
+EXPORTS
+	ScreenSaverProc
+	ScreenSaverConfigureDialog

@@ -1,0 +1,157 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_MATRIX              BITMAP  DISCARDABLE     "matrix.bmp"
+IDB_MATRIX2             BITMAP  DISCARDABLE     "matrix2.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+DLG_SCRNSAVECONFIGURE DIALOG DISCARDABLE  0, 0, 238, 209
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "What IS The Matrix...?"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Original XMatrix Parameters",IDC_STATIC,6,3,228,99
+    RTEXT           "Glyph size:",IDC_STATIC,24,15,35,8
+    CONTROL         "&Small",IDC_SMALL,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,66,15,33,10
+    CONTROL         "&Large",IDC_LARGE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,108,15,34,10
+    RTEXT           "Scroll type:",IDC_STATIC,24,30,36,8,NOT WS_GROUP
+    CONTROL         "Sl&iding",IDC_SLIDING,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,66,30,37,10
+    CONTROL         "&Growing",IDC_GROWING,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,108,30,42,10
+    CONTROL         "&Both",IDC_BOTH,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,156,30,31,10
+    RTEXT           "Glyph &density:",IDC_STATIC,12,45,48,8
+    EDITTEXT        IDC_DENSITY,66,43,24,12,ES_CENTER | ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "%",IDC_STATIC,92,46,8,8
+    RTEXT           "Spi&nners:",IDC_STATIC,120,45,30,8
+    EDITTEXT        IDC_SPINNERS,156,43,24,12,ES_CENTER | ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    RTEXT           "Scroll sp&eed:",IDC_STATIC,18,60,42,8
+    CONTROL         "Slider1",IDC_SPEED,"msctls_trackbar32",TBS_BOTH | 
+                    TBS_NOTICKS | WS_TABSTOP,12,72,216,12
+    RTEXT           "=",IDC_STATIC,40,87,10,8
+    LTEXT           ": E&xact mSec delay for control freaks :-p",IDC_STATIC,
+                    100,87,126,8
+    EDITTEXT        IDC_DELAY,54,85,44,12,ES_CENTER | ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    GROUPBOX        "Craig's Hack Shop :-) ",IDC_STATIC,6,108,228,54
+    CONTROL         "&Random glowing characters",IDC_RANDGLOW,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,12,121,104,10
+    LTEXT           "Glo&w rate:",IDC_GLOWRATETEXT,150,121,33,8,WS_DISABLED
+    EDITTEXT        IDC_GLOWRATE,186,120,40,12,ES_AUTOHSCROLL | ES_NUMBER | 
+                    WS_DISABLED
+    CONTROL         "&Phosphor trails",IDC_PHOSPHOR,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,134,62,10
+    CONTROL         "&Free your mind -- break the rules!",IDC_NORULES,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,12,147,119,10
+    DEFPUSHBUTTON   "&OK",IDOK,6,168,50,14
+    PUSHBUTTON      "&Cancel",IDCANCEL,183,168,50,14
+    LTEXT           "Based on XMatrix, Copyright (c) 1999 Jamie Zawinski <jwz@jwz.org>",
+                    IDC_STATIC,6,187,220,8
+    LTEXT           "Windows port by Craig Boston <ezzt@ticnet.com>",
+                    IDC_STATIC,6,196,211,9
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    DLG_SCRNSAVECONFIGURE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 231
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 202
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_MATRIX              ICON    DISCARDABLE     "matrix.ico"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
