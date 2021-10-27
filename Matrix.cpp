@@ -31,7 +31,15 @@
  * style ( // ) wherever possible so the difference would be noticible.
  */
 
-#include "stdafx.h"				// funky MS predefined header crap.  whatever...
+#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
+
+#include <windows.h>
+#include <commctrl.h>
+#include <stdlib.h>
+#include <time.h>
+#include <scrnsave.h>
+
+#include "resource.h"
 
 #define VendorName "Pointless Stuff Unlimited"		// predefined stuff
 #define AppName "Matrix"							// for registry access
@@ -44,6 +52,12 @@ extern HINSTANCE hMainInstance;	// screen saver instance handle
 #define FADE_COL  0				// paletted BMPs (check out the .rc file)
 #define PLAIN_COL 1				// with ImageMagik and Corel PhotoPaint 9
 #define GLOW_COL  2				// (I wanted fine control over the palette)
+
+#ifdef _M_IX86
+#define TIME time
+#else
+#define TIME _time32
+#endif
 
 typedef struct {
   unsigned int glyph   : 8;
@@ -74,7 +88,7 @@ typedef struct {
 	RECT screen;
 	HDC hDC;
 	HDC TempBitmap;
-	UINT timer;
+	UINT_PTR timer;
 	HBRUSH black;
 
 	m_config config;
@@ -313,7 +327,7 @@ BOOL WINAPI ScreenSaverConfigureDialog(HWND hDlg, UINT message, WPARAM wParam, L
 		return TRUE;			// everything's fine here
 
 	case WM_HSCROLL:			// slider tracking
-		pos = SendMessage(hSpeed, TBM_GETPOS, 0, 0);
+		pos = (long)SendMessage(hSpeed, TBM_GETPOS, 0, 0);
 		pos = 250 - pos;		// what is this, scheme?
 		_itoa(pos, buffer, 10);
 		SendMessage(hDelay, WM_SETTEXT, 0, (LPARAM)buffer);
@@ -328,18 +342,18 @@ BOOL WINAPI ScreenSaverConfigureDialog(HWND hDlg, UINT message, WPARAM wParam, L
 			EnableWindow(hGlowRate, dummy ? TRUE : FALSE);
 			break;
 		case IDOK:				// save settings
-			dummy = SendMessage(hLarge, BM_GETCHECK, 0, 0);
+			dummy = (long)SendMessage(hLarge, BM_GETCHECK, 0, 0);
 			if (dummy == BST_CHECKED)
 				config.size = 1;
 			else
 				config.size = 0;
 
-			dummy = SendMessage(hBoth, BM_GETCHECK, 0, 0);
+			dummy = (long)SendMessage(hBoth, BM_GETCHECK, 0, 0);
 			if (dummy == BST_CHECKED)
 				config.style = 2;
 			else
 			{
-				dummy = SendMessage(hGrowing, BM_GETCHECK, 0, 0);
+				dummy = (long)SendMessage(hGrowing, BM_GETCHECK, 0, 0);
 				if (dummy == BST_CHECKED)
 					config.style = 1;
 				else
@@ -355,7 +369,7 @@ BOOL WINAPI ScreenSaverConfigureDialog(HWND hDlg, UINT message, WPARAM wParam, L
 			SendMessage(hDelay, WM_GETTEXT, 64, (LPARAM)buffer);
 			config.delay = atoi(buffer);
 
-			dummy = SendMessage(hRandGlow, BM_GETCHECK, 0, 0);
+			dummy = (long)SendMessage(hRandGlow, BM_GETCHECK, 0, 0);
 			if (dummy == BST_CHECKED)
 				config.randglow = 1;
 			else
@@ -364,13 +378,13 @@ BOOL WINAPI ScreenSaverConfigureDialog(HWND hDlg, UINT message, WPARAM wParam, L
 			SendMessage(hGlowRate, WM_GETTEXT, 64, (LPARAM)buffer);
 			config.glowrate = atoi(buffer);
 
-			dummy = SendMessage(hPhosphor, BM_GETCHECK, 0, 0);		// a kludge, i know
+			dummy = (long)SendMessage(hPhosphor, BM_GETCHECK, 0, 0);		// a kludge, i know
 			if (dummy == BST_CHECKED)
 				config.phosphor = 1;
 			else
 				config.phosphor = 0;
 
-			dummy = SendMessage(hNoRules, BM_GETCHECK, 0, 0);
+			dummy = (long)SendMessage(hNoRules, BM_GETCHECK, 0, 0);
 			if (dummy == BST_CHECKED)
 				config.norules = 1;
 			else
@@ -699,7 +713,7 @@ LONG WINAPI ScreenSaverProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPara
 
 	switch(message) {
 	case WM_CREATE:
-		srand(time(NULL));
+		srand(TIME(NULL));
 //		MoveWindow(hwnd, 1152, 144, 1024, 768, true);
 		state = init_matrix(hwnd);			// config gets read here too
 		state->timer = SetTimer(hwnd, 1, state->config.delay, NULL);
